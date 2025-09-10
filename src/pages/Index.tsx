@@ -1,5 +1,7 @@
 import { ProductCard } from "@/components/ProductCard";
 import { SecurePurchase } from "@/components/SecurePurchase";
+import { Button } from "@/components/ui/button";
+import { MessageCircle } from "lucide-react";
 import oblivionImage from "@/assets/oblivion-product.jpg";
 import dupeImage from "@/assets/dupe-product.jpg";
 
@@ -9,6 +11,15 @@ const Index = () => {
       {/* Header */}
       <header className="container mx-auto px-6 py-6">
         <div className="flex justify-between items-center">
+          <Button
+            variant="ghost"
+            size="lg"
+            onClick={() => window.open("https://discord.gg/MxmB8jfRtZ", "_blank")}
+            className="text-primary hover:text-primary/80"
+          >
+            <MessageCircle className="w-6 h-6 mr-2" />
+            Join Discord
+          </Button>
           <h1 className="text-2xl font-bold bg-gradient-primary bg-clip-text text-transparent">
             Oblivion Store
           </h1>

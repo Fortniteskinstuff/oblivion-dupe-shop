@@ -122,18 +122,24 @@ export const PaymentModal = ({ isOpen, onClose, productName, price }: PaymentMod
                 <CardContent className="p-6">
                   <div className="text-center space-y-4">
                     <CreditCard className="w-16 h-16 mx-auto text-primary" />
-                    <h3 className="text-xl font-semibold text-foreground">Card Payment</h3>
-                    <p className="text-muted-foreground">
-                      Secure payment processing with Stripe
-                    </p>
-                    <Button 
-                      variant="payment" 
-                      size="lg" 
-                      className="w-full"
-                      onClick={() => window.open("https://sellix.io/OblivionClient", "_blank")}
-                    >
-                      Pay with Card
-                    </Button>
+                    <div className="space-y-3">
+                      <Button 
+                        variant="payment" 
+                        size="lg" 
+                        className="w-full"
+                        onClick={() => window.open("https://gift-cards.coingate.com/gift-cards/rewarble-super", "_blank")}
+                      >
+                        Buy Gift Card
+                      </Button>
+                      <Button 
+                        variant="payment" 
+                        size="lg" 
+                        className="w-full"
+                        onClick={() => window.open("https://gift-cards.coingate.com/gift-cards/rewarble-super", "_blank")}
+                      >
+                        Purchase Gift Card
+                      </Button>
+                    </div>
                   </div>
                 </CardContent>
               </Card>
