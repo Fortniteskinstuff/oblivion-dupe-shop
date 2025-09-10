@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { PaymentModal } from "./PaymentModal";
 
 interface ProductCardProps {
@@ -12,6 +13,15 @@ interface ProductCardProps {
 
 export const ProductCard = ({ title, description, price, image }: ProductCardProps) => {
   const [showPayment, setShowPayment] = useState(false);
+  const [selectedPlan, setSelectedPlan] = useState("");
+
+  const isOblivion = title === "Oblivion";
+  const planOptions = {
+    monthly: { label: "Monthly", price: "$29.99" },
+    yearly: { label: "Yearly", price: "$299.99" }
+  };
+
+  const currentPrice = isOblivion && selectedPlan ? planOptions[selectedPlan as keyof typeof planOptions].price : price;
 
   return (
     <>
@@ -34,16 +44,31 @@ export const ProductCard = ({ title, description, price, image }: ProductCardPro
           <p className="text-muted-foreground mb-6 leading-relaxed">
             {description}
           </p>
+
+          {isOblivion && (
+            <div className="mb-6">
+              <Select value={selectedPlan} onValueChange={setSelectedPlan}>
+                <SelectTrigger className="w-full bg-muted border-border/50">
+                  <SelectValue placeholder="Select plan" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="monthly">Monthly - $29.99</SelectItem>
+                  <SelectItem value="yearly">Yearly - $299.99</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+          )}
           
           <div className="flex items-center justify-between">
             <span className="text-3xl font-bold bg-gradient-primary bg-clip-text text-transparent">
-              {price}
+              {currentPrice}
             </span>
             
             <Button 
               variant="product"
               onClick={() => setShowPayment(true)}
               className="group-hover:animate-glow"
+              disabled={isOblivion && !selectedPlan}
             >
               Get Now
             </Button>
@@ -54,8 +79,8 @@ export const ProductCard = ({ title, description, price, image }: ProductCardPro
       <PaymentModal 
         isOpen={showPayment}
         onClose={() => setShowPayment(false)}
-        productName={title}
-        price={price}
+        productName={isOblivion && selectedPlan ? `${title} (${planOptions[selectedPlan as keyof typeof planOptions].label})` : title}
+        price={currentPrice}
       />
     </>
   );

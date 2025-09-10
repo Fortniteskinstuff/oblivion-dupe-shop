@@ -126,21 +126,18 @@ export const PaymentModal = ({ isOpen, onClose, productName, price }: PaymentMod
                     <p className="text-muted-foreground">
                       Secure payment processing with Stripe
                     </p>
-                    <Button variant="payment" size="lg" className="w-full">
+                    <Button 
+                      variant="payment" 
+                      size="lg" 
+                      className="w-full"
+                      onClick={() => window.open("https://sellix.io/OblivionClient", "_blank")}
+                    >
                       Pay with Card
                     </Button>
                   </div>
                 </CardContent>
               </Card>
               
-              <div className="grid grid-cols-2 gap-3">
-                <Button variant="payment" className="bg-[#5469d4] hover:bg-[#4c63d2]">
-                  PayPal
-                </Button>
-                <Button variant="payment" className="bg-[#00d924] hover:bg-[#00c520]">
-                  Apple Pay
-                </Button>
-              </div>
             </div>
           )}
         </div>

@@ -1,18 +1,29 @@
 import { ProductCard } from "@/components/ProductCard";
+import { SecurePurchase } from "@/components/SecurePurchase";
 import oblivionImage from "@/assets/oblivion-product.jpg";
 import dupeImage from "@/assets/dupe-product.jpg";
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
+      {/* Header */}
+      <header className="container mx-auto px-6 py-6">
+        <div className="flex justify-between items-center">
+          <h1 className="text-2xl font-bold bg-gradient-primary bg-clip-text text-transparent">
+            Oblivion Store
+          </h1>
+          <SecurePurchase />
+        </div>
+      </header>
+
       {/* Hero Section */}
       <section className="relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-glow opacity-30" />
-        <div className="container mx-auto px-6 py-24 relative z-10">
+        <div className="container mx-auto px-6 py-20 relative z-10">
           <div className="text-center max-w-4xl mx-auto">
-            <h1 className="text-6xl md:text-7xl font-bold mb-6 bg-gradient-primary bg-clip-text text-transparent animate-float">
+            <h2 className="text-6xl md:text-7xl font-bold mb-6 bg-gradient-primary bg-clip-text text-transparent animate-float">
               Premium Digital Products
-            </h1>
+            </h2>
             <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
               Discover cutting-edge solutions designed for the modern digital landscape. 
               Secure payments via crypto and traditional methods.
